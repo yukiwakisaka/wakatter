@@ -10,16 +10,35 @@
 	<%= render 'layouts/shim' %>
 	</head>
 
-	<body>
+<% if !signed_in? && (yield(:page_title) == "") %>
+
+	<body class = "initial">
 		<%= render 'layouts/header' %>
 		<div class = "container">
 			<% flash.each do |key, value| %>
         		<!-- <div class="alert alert-<%= key %>"><%= value %></div> -->
-<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+			<%= content_tag(:div, value, class: "alert alert-#{key}") %>
       		<% end %>
 			<%= yield %>
 			<%= render 'layouts/footer' %>
 			<%= debug(params) if Rails.env.development? %>
 		</div>		
 	</body>
+
+<% else %>
+
+	<body>
+		<%= render 'layouts/header' %>
+		<div class = "container">
+			<% flash.each do |key, value| %>
+        		<!-- <div class="alert alert-<%= key %>"><%= value %></div> -->
+			<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      		<% end %>
+			<%= yield %>
+			<%= render 'layouts/footer' %>
+			<%= debug(params) if Rails.env.development? %>
+		</div>		
+	</body>
+
+<% end %>
 </html>

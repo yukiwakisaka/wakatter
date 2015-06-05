@@ -21,6 +21,15 @@ body {
   padding-top: 60px;
 }
 
+body.initial{
+  padding-top: 40px;
+  background-color: none;
+  background-image: url("https://pbs.twimg.com/media/BjUX-abCQAAs9-R.jpg:large");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+}
+
 section {
   overflow: auto;
 }
@@ -64,13 +73,30 @@ p {
   line-height: 1.7em;
 }
 
+/* home */
+
+div.center{
+}
+
 /* header */
+
+header > div.navbar-inner{
+  background-color: #000;
+  background-image: none;
+}
+
+.navbar .nav > li > a{
+  color: #fff;
+  &:hover{
+    color: #fff;
+  }
+}
 
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #000;
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -79,14 +105,16 @@ p {
 }
 
 #logo:hover {
-  color: #000;
+  color: #fff;
   text-decoration: none;
 }
+
+
 
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin-top: 200px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: $grayLight;
