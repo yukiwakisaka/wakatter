@@ -1,4 +1,4 @@
-Sample32::Application.routes.draw do
+Wakatter::Application.routes.draw do
   # get "users/new"
 
   resources :users do
@@ -9,6 +9,7 @@ Sample32::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :wakaru_relations, only: [:create, :destroy]
 
   root 'static_pages#home'
   match '/help', to: 'static_pages#help', via: 'get'

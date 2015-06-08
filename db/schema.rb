@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604075717) do
+ActiveRecord::Schema.define(version: 20150608000931) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -45,5 +45,16 @@ ActiveRecord::Schema.define(version: 20150604075717) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
+  create_table "wakaru_relations", force: true do |t|
+    t.integer  "wakarareru_post_id"
+    t.integer  "wakaru_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wakaru_relations", ["wakarareru_post_id", "wakaru_user_id"], name: "index_wakaru_relations_on_post_id_and_ser_id", unique: true
+  add_index "wakaru_relations", ["wakarareru_post_id"], name: "index_wakaru_relations_on_wakarareru_post_id"
+  add_index "wakaru_relations", ["wakaru_user_id"], name: "index_wakaru_relations_on_wakaru_user_id"
 
 end

@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-Sample32::Application.config.secret_key_base = secure_token
+Wakatter::Application.config.secret_key_base = secure_token

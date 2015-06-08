@@ -16,10 +16,24 @@ describe User do
   it{should respond_to(:admin)}
   it{should respond_to(:microposts)}
   it{should respond_to(:feed)}
+
   it{should respond_to(:relationships)}
   it{should respond_to(:followed_users)}
+
+  it{should respond_to(:reverse_relationships)}
+  it{should respond_to(:followers)}
+
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
+
+  # 怪しい
+  it{should respond_to(:wakaru_relations)}
+  it{should respond_to(:wakarareru_posts)}
+
+  it { should respond_to(:wakaru?) }
+  it { should respond_to(:wakaru!) }
+  it { should respond_to(:wakaranai!)}
+
 
   it {should be_valid}
   it{should_not be_admin}
@@ -200,6 +214,32 @@ describe User do
 
       it { should_not be_following(other_user) }
       its(:followed_users) { should_not include(other_user)}
+    end
+  end
+
+  describe "wakaru" do
+    let(:wakarareru) do
+      FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
+    end
+
+    before do 
+      @user.save
+      @user.wakaru!(wakarareru)
+    end
+
+    it {should be_wakaru(wakarareru)}
+    its(:wakarareru_posts) {should include(wakarareru)}
+
+    # describe "wakaru user" do
+    #   subject { wakarareru }
+    #   its(:wakaru_users) { should include(@user) }
+    # end
+
+    describe "wakaranai" do
+      before { @user.wakaranai!(wakarareru) }
+
+      it { should_not be_wakaru(wakarareru) }
+      its(:wakarareru_posts) { should_not include(wakarareru) }
     end
   end
 end

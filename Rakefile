@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Sample32::Application.load_tasks
+Wakatter::Application.load_tasks

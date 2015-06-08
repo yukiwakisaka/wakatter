@@ -13,6 +13,11 @@ describe Micropost do
 	it {should respond_to (:content)}
 	it {should respond_to (:user_id)}
 	it {should respond_to (:user)}
+
+	# 怪しい
+	it {should respond_to (:wakaru_users)}
+	it {should respond_to (:reverse_wakaru_relations)}
+
 	its(:user) {should eq user}
 
 	it {should be_valid}
