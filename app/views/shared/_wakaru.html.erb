@@ -1,4 +1,5 @@
+
 <%= form_for(current_user.wakaru_relations.build(wakarareru_post_id: @item.id), remote: false) do |f| %>
-  <div><%= f.hidden_field :wakarareru_post_id %></div>
-  <%= f.submit "わかる", class: "btn btn-large btn-primary" %>
+  <%= f.hidden_field :wakarareru_post_id %>
+  <%= f.submit "わかる", class: "btn btn-xs btn-wakaru" %>
 <% end %>
