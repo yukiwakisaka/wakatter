@@ -1,10 +1,8 @@
 <% provide(:page_title, "") %>
  
-<div class = "hero-unit">
+<div class = "hero-unit hero-unit-show">
 
-	<% size = Math.log(Math.sqrt(@micropost.user.microposts.count))*10 %>
-
-	<%= link_to gravatar_for(@micropost.user, size: size), @micropost.user %>
+	<%= link_to gravatar_for(@micropost.user, size: 64), @micropost.user %>
 	<span class="user user-show">
 	  <%= link_to @micropost.user.name, @micropost.user %>
 	</span>
@@ -23,9 +21,11 @@
 	<% end %>
 
 
+
 <% if @users.any? %>
+	<div class = "waka">わかってくれた人</div>	
 	<ul class="users">
-	<%= render @users %>
+	<%= render partial: 'users/user_wo_delete', locals: { users: @users } %>
 	</ul>
 <% else %>
 
