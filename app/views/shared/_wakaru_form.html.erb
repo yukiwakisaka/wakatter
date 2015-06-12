@@ -1,9 +1,9 @@
-<% unless @item.nil? %>
+<% unless feed_item.nil? %>
   <span id="wakaru_form">
-  <% if current_user.wakaru?(@item) %>  	
-  	<%= render 'shared/wakaranai' %>
+  <% if current_user.wakaru?(feed_item) %>  	
+  	<%= render partial: 'shared/wakaranai', locals: {feed_item: feed_item} %>
   <% else %>
-    <%= render 'shared/wakaru' %>
+    <%= render partial: 'shared/wakaru', locals: {feed_item: feed_item}  %>
   <% end %>
   </span>
  <% end %>

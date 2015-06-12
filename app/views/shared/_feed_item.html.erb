@@ -1,4 +1,4 @@
- <% @item = feed_item %>
+ 
  <% size = Math.log(Math.sqrt(feed_item.user.microposts.count))*10 %>
 <li id="<%= feed_item.id %>">
   <div class="container">
@@ -12,9 +12,9 @@
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago. 
     </span>
 
-    わかられ数（<%= feed_item.wakaru_users.count %>）
+    <%= render partial: 'shared/wakarare_count', locals: { micropost: feed_item } %>
 
-    <%= render partial: 'shared/wakaru_form'  %>
+    <%= render partial: 'shared/wakaru_form' , locals: { feed_item: feed_item} %>
     <% if current_user?(feed_item.user) %>
     <%= link_to "delete", feed_item, method: :delete,
                     data: {confirm: "You sure?"},
