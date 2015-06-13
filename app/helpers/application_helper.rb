@@ -10,4 +10,10 @@ module ApplicationHelper
 		end
 	end
 
+	def destroy_wakararenai_user(micropost)
+		user = micropost.user
+		
+
+	end
+
 end

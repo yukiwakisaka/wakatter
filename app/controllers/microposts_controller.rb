@@ -4,9 +4,13 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def show
-    @micropost = Micropost.find(params[:id])
-    @waka = WakaruRelation.where(wakarareru_post: @micropost).pluck(:wakaru_user_id)
-    @users = User.where(id: @waka)
+    if @micropost = Micropost.find_by(id: params[:id])
+      @micropost = Micropost.find(params[:id])
+      @waka = WakaruRelation.where(wakarareru_post: @micropost).pluck(:wakaru_user_id)
+      @users = User.where(id: @waka)
+    else
+      redirect_to root_path
+    end
   end
 
   def create

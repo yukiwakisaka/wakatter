@@ -8,8 +8,14 @@ class UsersController < ApplicationController
   end
 
 	def show
-		@user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    if @user = User.find_by(id: params[:id])
+  		@user = User.find(params[:id])
+      @microposts = @user.microposts.paginate(page: params[:page])
+    elsif current_user.id == params[:id]
+      redirect_to game_over_path
+    else
+      redirect_to root_path
+    end
 	end
 
   def new
