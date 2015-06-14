@@ -10,6 +10,7 @@ Wakatter::Application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
   resources :wakaru_relations, only: [:create, :destroy]
+  resources :wakaran_rels, only: [:create, :destroy]
 
   root 'static_pages#home'
   match '/help', to: 'static_pages#help', via: 'get'

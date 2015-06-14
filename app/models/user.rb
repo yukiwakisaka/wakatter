@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 	has_many :wakaru_relations, foreign_key: "wakaru_user_id", dependent: :destroy
 	has_many :wakarareru_posts, through: :wakaru_relations, source: :wakarareru_post
 
+	has_many :wakaran_rels, foreign_key: "wakaran_user_id", dependent: :destroy
+	has_many :wakararen_posts, through: :wakaran_rels, source: :wakararen_post
+
 	has_secure_password
 	before_save{email.downcase!}
 	before_create :create_remember_token
@@ -23,11 +26,11 @@ class User < ActiveRecord::Base
 	validates :password, length: {minimum: 6}
 
 	def User.new_remember_token
-  	SecureRandom.urlsafe_base64
+  		SecureRandom.urlsafe_base64
 	end
 
 	def User.encrypt(token)
-  	Digest::SHA1.hexdigest(token.to_s)
+  		Digest::SHA1.hexdigest(token.to_s)
 	end
 
 	def feed
@@ -56,6 +59,18 @@ class User < ActiveRecord::Base
 
 	def wakaranai!(wakarareru)
 		wakaru_relations.find_by(wakarareru_post_id: wakarareru.id).destroy
+	end	
+
+	def wakaran?(wakararen)
+		wakaran_rels.find_by(wakararen_post_id: wakararen.id)
+	end
+
+	def wakaran!(wakararen)
+		wakaran_rels.create!(wakararen_post_id: wakararen.id)
+	end
+
+	def unwakaran!(wakararen)
+		wakaran_rels.find_by(wakararen_post_id: wakararen.id).destroy
 	end
 
 	private
