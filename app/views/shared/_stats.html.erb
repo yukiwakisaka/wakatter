@@ -14,18 +14,34 @@
     ほろわー
   </a>
 
+  <% @wakaru_num = wakaru_count(@user) %>
+  <% @wakaran_num = wakaran_count(@user) %>
+
   <div class="waka-count">
   <strong style="height:20px;">
-    <%= wakaru_count(@user) %>
+    <%= @wakaru_num %>
   </strong>
     わかられる
   </div>
 
+
+<% if @user.admin %>
   <div class="waka-count">
+<% else %>
+  <% if @wakaran_num == @wakaru_num + 3 %>
+  <div class="waka-count" style="background-color:pink;">
+  <% elsif @wakaran_num == @wakaru_num + 2 %>
+  <div class="waka-count" style="background-color:yellow;">  
+  <% else %>
+  <div class="waka-count">
+  <% end %>
+<% end %>
+
   <strong style="height:20px;">
-    <%= wakaran_count(@user) %>
+    <%= @wakaran_num %>
   </strong>
     わかられず
+
   </div>
 
 </div>

@@ -13,7 +13,7 @@ class WakaruRelationsController < ApplicationController
       # @user.update_attributes(wakaru_count: 10)
     end
     # logger.debug "done"
-    redirect_to root_path
+    # redirect_to root_path
     respond_to do |format|
         # format.html { redirect_to root_path }
         format.html { redirect_back }

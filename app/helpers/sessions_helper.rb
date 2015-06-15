@@ -78,6 +78,6 @@ module SessionsHelper
     end
 
     def akaban?(user)
-      wakaru_count(user)<wakaran_count(user)
+      wakaru_count(user)+3<wakaran_count(user)
     end
 end
