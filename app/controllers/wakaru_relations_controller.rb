@@ -1,4 +1,5 @@
 class WakaruRelationsController < ApplicationController
+
   before_action :signed_in_user
   before_filter :request_from
 

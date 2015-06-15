@@ -1,4 +1,5 @@
 module SessionsHelper
+  include UsersHelper
 
 	def sign_in(user)
 		remember_token = User.new_remember_token
@@ -67,4 +68,13 @@ module SessionsHelper
   		end
   	end
 
+    def akaban
+      if akaban?(@wakararen.user)
+        flash[:error]="ban!!!!!!!"
+      end
+    end
+
+    def akaban?(user)
+      wakaru_count(user)<wakaran_count(user)
+    end
 end

@@ -1,0 +1,2 @@
+module WakaranRelsHelper
+end

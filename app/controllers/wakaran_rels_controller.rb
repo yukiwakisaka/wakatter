@@ -1,6 +1,8 @@
 class WakaranRelsController < ApplicationController
+
   before_action :signed_in_user
   before_filter :request_from
+  after_action :akaban, only: :create 
 
   def create
     if present_post(params[:wakaran_rel][:wakararen_post_id])
