@@ -20,9 +20,11 @@
 			</ol>
 			<%=  will_paginate @microposts %>
 		
-		<% else %>
+		<% elsif current_user?(@user) %>
 		<!-- 自作部 -->
 			<h3>早よ投稿せい</h3>
+		<% else %>
+			<h3>まさかの未投稿</h3>
 		<% end %>
 	</div>
 </div>

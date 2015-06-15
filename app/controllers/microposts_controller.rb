@@ -4,7 +4,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def show
-    if @micropost = Micropost.find_by(id: params[:id])
+    if present_post(params[:id])
       @micropost = Micropost.find(params[:id])
       @waka = WakaruRelation.where(wakarareru_post: @micropost).pluck(:wakaru_user_id)
       @users = User.where(id: @waka)

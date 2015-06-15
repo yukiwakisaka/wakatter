@@ -8,11 +8,11 @@ class UsersController < ApplicationController
   end
 
 	def show
-    if @user = User.find_by(id: params[:id])
+    if present_user(params[:id])
   		@user = User.find(params[:id])
       @microposts = @user.microposts.paginate(page: params[:page])
-    elsif current_user.id == params[:id]
-      redirect_to game_over_path
+    # elsif current_user.id == params[:id]
+    #   redirect_to game_over_path
     else
       redirect_to root_path
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
     	flash[:success] = "Welcome to Wakatter!"
-      redirect_to @user
+      redirect_to root_path
   	else
   		render 'new'
   	end

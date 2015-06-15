@@ -3,9 +3,11 @@ class WakaruRelationsController < ApplicationController
   before_filter :request_from
 
   def create
-    @wakarareru = Micropost.find(params[:wakaru_relation][:wakarareru_post_id])
-    # logger.debug "------------------------------VVV----------------------------------"
-    current_user.wakaru!(@wakarareru)
+    if present_post(params[:wakaru_relation][:wakarareru_post_id])
+      @wakarareru = Micropost.find(params[:wakaru_relation][:wakarareru_post_id])
+      # logger.debug "------------------------------VVV----------------------------------"
+      current_user.wakaru!(@wakarareru)
+    end
     # logger.debug "done"
     # redirect_to root_path
     respond_to do |format|
@@ -17,8 +19,10 @@ class WakaruRelationsController < ApplicationController
   end
 
   def destroy
-    @wakarareru = WakaruRelation.find(params[:id]).wakarareru_post
-    current_user.wakaranai!(@wakarareru)
+    if present_post(params[:id])
+      @wakarareru = WakaruRelation.find(params[:id]).wakarareru_post
+      current_user.wakaranai!(@wakarareru)
+    end
     respond_to do |format|
       # format.html { redirect_to root_path }
       format.html { redirect_back }

@@ -3,9 +3,11 @@ class WakaranRelsController < ApplicationController
   before_filter :request_from
 
   def create
-    @wakararen = Micropost.find(params[:wakaran_rel][:wakararen_post_id])
-    # logger.debug "------------------------------VVV----------------------------------"
-    current_user.wakaran!(@wakararen)
+    if present_post(params[:wakaran_rel][:wakararen_post_id])
+      @wakararen = Micropost.find(params[:wakaran_rel][:wakararen_post_id])
+      # logger.debug "------------------------------VVV----------------------------------"
+      current_user.wakaran!(@wakararen)
+    end
     # logger.debug "done"
     # redirect_to root_path
     respond_to do |format|
@@ -17,8 +19,10 @@ class WakaranRelsController < ApplicationController
   end
 
   def destroy
-    @wakararen = WakaranRel.find(params[:id]).wakararen_post
-    current_user.unwakaran!(@wakararen)
+    if present_post(params[:id])
+      @wakararen = WakaranRel.find(params[:id]).wakararen_post
+      current_user.unwakaran!(@wakararen)
+    end
     respond_to do |format|
       # format.html { redirect_to root_path }
       format.html { redirect_back }
