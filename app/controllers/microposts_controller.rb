@@ -8,6 +8,8 @@ class MicropostsController < ApplicationController
       @micropost = Micropost.find(params[:id])
       @waka = WakaruRelation.where(wakarareru_post: @micropost).pluck(:wakaru_user_id)
       @users = User.where(id: @waka)
+    elsif signed_in?
+      redirect_to gameover_path
     else
       redirect_to root_path
     end

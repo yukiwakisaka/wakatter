@@ -7,17 +7,12 @@ class WakaranRelsController < ApplicationController
   def create
     if present_post(params[:wakaran_rel][:wakararen_post_id])
       @wakararen = Micropost.find(params[:wakaran_rel][:wakararen_post_id])
-      # logger.debug "------------------------------VVV----------------------------------"
       current_user.wakaran!(@wakararen)
     end
-    # logger.debug "done"
-    # redirect_to root_path
     respond_to do |format|
-        # format.html { redirect_to root_path }
         format.html { redirect_back }
         format.js
     end
-    # logger.debug "complete"
   end
 
   def destroy
@@ -26,7 +21,6 @@ class WakaranRelsController < ApplicationController
       current_user.unwakaran!(@wakararen)
     end
     respond_to do |format|
-      # format.html { redirect_to root_path }
       format.html { redirect_back }
       format.js
     end

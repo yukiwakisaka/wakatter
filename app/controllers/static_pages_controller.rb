@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
 
+  before_action :destroy_aka, only: :gameover
+
   def home
   	if signed_in?
   		@micropost = current_user.microposts.build
@@ -19,5 +21,17 @@ class StaticPagesController < ApplicationController
 
   def contact
     render :layout => "second_layout"
+  end  
+
+  def gameover
+    render :layout => "go_layout"
   end
+
+  private 
+    def destroy_aka
+      if signed_in?
+        current_user.destroy unless current_user.admin
+      end
+    end
+
 end

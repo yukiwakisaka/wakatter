@@ -6,20 +6,12 @@ class WakaruRelationsController < ApplicationController
   def create
     if present_post(params[:wakaru_relation][:wakarareru_post_id])
       @wakarareru = Micropost.find(params[:wakaru_relation][:wakarareru_post_id])
-      # logger.debug "------------------------------VVV----------------------------------"
       current_user.wakaru!(@wakarareru)
-
-      # @user = User.find_by(id: @wakarareru.user.id)
-      # @user.update_attributes(wakaru_count: 10)
     end
-    # logger.debug "done"
-    # redirect_to root_path
     respond_to do |format|
-        # format.html { redirect_to root_path }
         format.html { redirect_back }
         format.js
     end
-    # logger.debug "complete"
   end
 
   def destroy
@@ -31,7 +23,6 @@ class WakaruRelationsController < ApplicationController
       flash[:success] = @wakararer.name
     end
     respond_to do |format|
-      # format.html { redirect_to root_path }
       format.html { redirect_back }
       format.js
     end

@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     if present_user(params[:id])
   		@user = User.find(params[:id])
       @microposts = @user.microposts.paginate(page: params[:page])
-    # elsif current_user.id == params[:id]
-    #   redirect_to game_over_path
+    elsif signed_in?
+      redirect_to gameover_path
     else
       redirect_to root_path
     end
@@ -22,14 +22,9 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
-  def edit
-    # @user = User.find(params[:id])
-  end
-
   def update
-    # @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "へんこーできたよ（はあと"
       redirect_to @user
     else
       render 'edit'
@@ -40,7 +35,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
       sign_in @user
-    	flash[:success] = "Welcome to Wakatter!"
+    	flash[:success] = "おめでとう、これで君もわかられるさんだ！"
       redirect_to root_path
   	else
   		render 'new'
@@ -50,7 +45,7 @@ class UsersController < ApplicationController
   def destroy
     unless User.find(params[:id]).admin
       User.find(params[:id]).destroy
-      flash[:success] = "User destroyed."
+      flash[:success] = "ほな、ばいなら。"
       redirect_to users_url
     end
   end
@@ -76,7 +71,6 @@ class UsersController < ApplicationController
   	end
 
     #Before actions
-
 
     def correct_user
       @user = User.find(params[:id])

@@ -5,7 +5,6 @@ class RelationshipsController < ApplicationController
     if present_user(params[:relationship][:followed_id])
       @user = User.find(params[:relationship][:followed_id])
       current_user.follow!(@user)
-      # redirect_to @user
       respond_to do |format|
         format.html { redirect_to @user }
         format.js
@@ -19,7 +18,6 @@ class RelationshipsController < ApplicationController
     if present_user(params[:id])
       @user = Relationship.find(params[:id]).followed
       current_user.unfollow!(@user)
-      # redirect_to @user
       respond_to do |format|
         format.html { redirect_to @user }
         format.js

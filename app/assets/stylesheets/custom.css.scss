@@ -34,6 +34,17 @@ body.initial{
   background-position: center 40px;
 }
 
+body.gameover{
+  margin-top: 40px;
+  padding-top: 0px;
+  background-color: #000;
+  background-image: url("http://materials.rmake.jp/materials/0012/3652/_____________.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center 100px;
+}
+
 section {
   overflow: auto;
 }
@@ -49,11 +60,6 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
-
-// .container{
-//   width: 620px;
-//   float: right;
-// }
 
 /* typography */
 
@@ -282,9 +288,6 @@ input{
     overflow: auto;
     padding: 10px 0;
     border-top: 1px solid $gray;
-    // &:first-child {
-    //   border-top: 0px;
-    // }
     &:last-child {
       border-bottom: 1px solid $gray;
     }
@@ -305,25 +308,13 @@ input{
   }
 }
 
-.user{
-  // position: relative;
-  // // padding-left: 60px;
-  // left: 0;
-}
 
 .content {
-  // position: relative;
-  // // padding-left: 60px;
-  // left: 0;
-  // width: 620px;
   height: 82px;
   display: block;
   word-break: break-all;
 }
 .timestamp {  
-  // position: relative;
-  // // padding-left: 60px;
-  // left: 0;
   color: #666;
 }
 
@@ -380,7 +371,6 @@ form {
 }
 
 .waka{
-  // border-bottom: 1px solid gray;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 5px;

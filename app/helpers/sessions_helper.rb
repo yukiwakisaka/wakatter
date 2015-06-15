@@ -53,10 +53,6 @@ module SessionsHelper
   		else
   			return true
   		end
-  		# if User.find(params[:id]).nil?
-  		# 	flash[:error] = "そのゆーざは存在しないか消去されましたw"
-  		# 	redirect_to root_path
-  		# end
   	end
 
   	def present_post(post_id)

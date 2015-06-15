@@ -1,5 +1,4 @@
 Wakatter::Application.routes.draw do
-  # get "users/new"
 
   resources :users do
     member do
