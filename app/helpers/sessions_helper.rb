@@ -70,7 +70,10 @@ module SessionsHelper
 
     def akaban
       if akaban?(@wakararen.user)
-        flash[:error]="ban!!!!!!!"
+        unless @wakararen.user.admin
+          User.find_by(id: @wakararen.user.id).destroy
+          flash[:error]="ban!!!!!!!"
+        end
       end
     end
 
