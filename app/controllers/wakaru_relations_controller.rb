@@ -7,9 +7,12 @@ class WakaruRelationsController < ApplicationController
       @wakarareru = Micropost.find(params[:wakaru_relation][:wakarareru_post_id])
       # logger.debug "------------------------------VVV----------------------------------"
       current_user.wakaru!(@wakarareru)
+
+      # @user = User.find_by(id: @wakarareru.user.id)
+      # @user.update_attributes(wakaru_count: 10)
     end
     # logger.debug "done"
-    # redirect_to root_path
+    redirect_to root_path
     respond_to do |format|
         # format.html { redirect_to root_path }
         format.html { redirect_back }
@@ -22,6 +25,9 @@ class WakaruRelationsController < ApplicationController
     if present_post(params[:id])
       @wakarareru = WakaruRelation.find(params[:id]).wakarareru_post
       current_user.wakaranai!(@wakarareru)
+
+      @wakararer = @wakarareru.user
+      flash[:success] = @wakararer.name
     end
     respond_to do |format|
       # format.html { redirect_to root_path }

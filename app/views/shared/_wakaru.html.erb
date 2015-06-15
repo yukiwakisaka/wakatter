@@ -1,4 +1,3 @@
-
 <%= form_for(current_user.wakaru_relations.build(wakarareru_post_id: feed_item.id), remote: false) do |f| %>
   <%= f.hidden_field :wakarareru_post_id %>
   <%= f.submit "わかる", class: "btn btn-xs btn-wakaru" %>

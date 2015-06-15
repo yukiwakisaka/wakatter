@@ -226,6 +226,15 @@ aside {
   }
   strong {
     display: block;
+    text-align: center;
+  }
+
+  .waka-count{
+    float:left; 
+    padding-left:8px; 
+    padding-right:8px; 
+    margin:0px; 
+    border-left:1px solid #eeeeee;
   }
 }
 

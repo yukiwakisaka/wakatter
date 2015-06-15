@@ -26,4 +26,20 @@ module UsersHelper
 		size = size_post + size_wakaru + size_ff
 		return size
 	end
+
+	def wakaru_count(user)
+		k = 0
+		user.microposts.each do |p|
+			k += p.wakaru_users.count
+		end
+		return k
+	end
+
+	def wakaran_count(user)
+		k = 0
+		user.microposts.each do |p|
+			k += p.wakaran_users.count
+		end
+		return k
+	end
 end
