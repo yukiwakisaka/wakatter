@@ -19,6 +19,7 @@ Wakatter::Application.routes.draw do
   match '/signin', to: 'sessions#new', via:'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/gameover', to: 'static_pages#gameover', via: 'get'
+  match '/explanation', to: 'static_pages#explanation', via: 'get'
 
 
 

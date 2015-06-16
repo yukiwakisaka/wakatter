@@ -15,6 +15,10 @@ class StaticPagesController < ApplicationController
     render :layout => "second_layout"
   end
 
+  def explanation
+    render :layout => "second_layout"
+  end
+
   def about
     render :layout => "second_layout"
   end

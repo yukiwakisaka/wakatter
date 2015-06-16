@@ -10,7 +10,7 @@
 	<%= render 'layouts/shim' %>
 	</head>
 
-	<body class = "initial", <% if yield(:page_title) == "" %>style = "background-blend-mode: screen;"<% end %>>
+	<body class = "initial", <% if (yield(:screen).presence||false) %>style = "background-blend-mode: screen;"<% end %>>
 		<%= render 'layouts/header' %>
 		<div style = "width:450px;", class = "container">
 			<% flash.each do |key, value| %>
