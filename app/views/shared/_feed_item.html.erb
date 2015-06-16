@@ -1,12 +1,13 @@
-<% if gravatar_for(feed_item.user) == "" %>
-  <% size = 0 %>
-<% elsif gravatar_for(feed_item.user) %>
-  <% size = icon_size(feed_item) %>
+<% pic_size = icon_size(feed_item) %>
+<% if pic_size > 20 %>
+  <% size = pic_size %>
+<% else %>
+  <% size = 20 %>
 <% end %>
 <% space = size + 10 %>
 
 <li id="<%= feed_item.id %>">
-    <%= link_to gravatar_for(feed_item.user, size: size), feed_item.user %>
+    <%= link_to gravatar_for(feed_item.user, size: pic_size), feed_item.user %>
 
   <div style="float: right; width: <%= 590-space %>px;">
     <span class="user">
