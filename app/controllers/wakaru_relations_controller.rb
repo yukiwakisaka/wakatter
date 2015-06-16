@@ -17,9 +17,6 @@ class WakaruRelationsController < ApplicationController
     if present_post(params[:id])
       @wakarareru = WakaruRelation.find(params[:id]).wakarareru_post
       current_user.wakaranai!(@wakarareru)
-
-      @wakararer = @wakarareru.user
-      flash[:success] = @wakararer.name
     end
     redirect_back
   end
