@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
 	rescue_from Exception, with: :render_500
 
 	def render_404
-		undefined_url
+		redirect_to root_path
 	end
 
 	def render_500
-		undefined_url
+		redirect_to root_path
 	end
 end
