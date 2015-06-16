@@ -7,6 +7,11 @@ class StaticPagesController < ApplicationController
   	if signed_in?
   		@micropost = current_user.microposts.build
   		@feed_items = current_user.feed.paginate(page: params[:page])
+      if current_user.followed_users.count == 0
+        @comment = "ほろーしなきゃ！" 
+      else
+        @comment = "わかりうる呟き"
+      end
     else
       apply_second_layout
   	end

@@ -14,7 +14,12 @@
 			</section>
 		</aside>
 		<div class = "span8">
-			<h3>わかりうる呟き</h3>
+			<h3>
+				<%= @comment %>
+				<% if current_user.followed_users.count == 0 %>
+					（→<%= link_to '人探し', users_path %>する？）
+				<% end %>
+			</h3>
 			<%= render 'shared/feed' %>
 		</div>
 	</div>
