@@ -1,6 +1,6 @@
 <% provide(:page_title, "せってー") %>
 
-<h1>Update your profile</h1>
+<h1>nameとemailのへんこー</h1>
 <div class="row">
   <div class="span4 offset4">
     <%= form_for(@user) do |f| %>
@@ -18,11 +18,20 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-      <div class = "actions">
-        <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <div class = "actions" style="padding-bottom: 10px; float:right; margin-left: 185px;">
+        <%= f.submit "へんこーする", class: "btn btn-primary" %>
       </div>
     <% end %>
     <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails" target = "_blank">change</a>
+    <a href="http://gravatar.com/emails" target = "_blank">iconへんこー</a>
+
+    <div style="padding:20px;">
+      <center>
+        <%= link_to "もう無理、垢消しする…", gameover_path,
+                        class: "btn btn-inverse",
+                        data: {confirm: "マジで言ってる？？？？？？"},
+                        title: "AKA_KESHI" %>
+      </center>
+    </div>
   </div>
 </div>

@@ -11,7 +11,9 @@
 		<%= f.label :password %>
 		<%= f.password_field :password %>
 		
-		<%= f.submit "ろぐいん" , class: "btn btn-large btn-primary" %>
+		<div class = "actions" style="padding-bottom: 10px; float:right; margin-left: 185px;">
+        	<%= f.submit "ろぐいんなさる", class: "btn btn-primary" %>
+      	</div>
 		<% end %>
     <p>垢持ってないの？(ﾌﾟｰｸｽ	 <%= link_to "つくろう、新垢！", signup_path %></p>
 	</div>
