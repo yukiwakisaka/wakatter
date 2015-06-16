@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
 	rescue_from Exception, with: :render_500
 
 	def render_404
-		redirect_to root_path
+		redirect_to erotter_path
 	end
 
 	def render_500
-		redirect_to root_path
+		redirect_to erotter_path
 	end
 end

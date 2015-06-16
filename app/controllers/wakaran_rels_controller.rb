@@ -4,14 +4,18 @@ class WakaranRelsController < ApplicationController
 
   before_action :signed_in_user
   before_filter :request_from
-  after_action :akaban, only: :create 
 
   def create
     if present_post(params[:wakaran_rel][:wakararen_post_id])
       @wakararen = Micropost.find(params[:wakaran_rel][:wakararen_post_id])
       current_user.wakaran!(@wakararen)
+      akaban
     end
-    redirect_back
+    if present_post(params[:wakaran_rel][:wakararen_post_id])
+      redirect_back
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy

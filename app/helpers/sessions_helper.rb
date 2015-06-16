@@ -65,24 +65,24 @@ module SessionsHelper
 		end
 	end
 
-  def akaban
-    if akaban?(@wakararen.user)
-      unless @wakararen.user.admin
-        User.find_by(id: @wakararen.user.id).destroy
-        flash[:error]="ban!!!!!!!"
-      end
-    end
-  end
+	def akaban
+		if akaban?(@wakararen.user)
+			unless @wakararen.user.admin
+				User.find_by(id: @wakararen.user.id).destroy
+				flash[:error]="ban!!!!!!!"
+			end
+		end
+	end
 
-  def akaban?(user)
-    wakaru_count(user)+3<wakaran_count(user)
-  end
+	def akaban?(user)
+		wakaru_count(user)+3<wakaran_count(user)
+	end
 
-  def undefined_url
-    if signed_in?
-      redirect_to gameover_path
-    else
-      redirect_to root_path
-    end
-  end
+	def undefined_url
+		if signed_in?
+			redirect_to gameover_path
+		else
+			redirect_to root_path
+		end
+	end
 end

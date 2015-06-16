@@ -24,7 +24,7 @@ body.initial{
   margin-top: 40px;
   padding-top: 0px;
   background-color: #888;
-  background-image: url("https://pbs.twimg.com/media/BjUX-abCQAAs9-R.jpg:large");
+  background-image: image-url("wakaru-free.jpg");
   background-size: 90% 90%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -35,7 +35,7 @@ body.gameover{
   margin-top: 40px;
   padding-top: 0px;
   background-color: #000;
-  background-image: url("http://materials.rmake.jp/materials/0012/3652/_____________.png");
+  background-image: image-url("gameover.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;

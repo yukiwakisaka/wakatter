@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
-  		<title>
-  			<%= full_title(yield(:page_title)) %>
-  		</title>
-	  	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-	  	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-	  	<%= csrf_meta_tags %>
-		<%= render 'layouts/shim' %>
-	</head>
+	<%= render partial: 'layouts/head', locals: {title: yield(:page_title)} %>
 	<body class = "gameover">
 		<%= render 'layouts/header' %>
 		<div style = "width:450px;", class = "container">

@@ -1,6 +1,7 @@
-<% size = icon_size(feed_item) %>
 <% if gravatar_for(feed_item.user) == "" %>
-<% size = 0 %>
+  <% size = 0 %>
+<% elsif gravatar_for(feed_item.user) %>
+  <% size = icon_size(feed_item) %>
 <% end %>
 <% space = size + 10 %>
 

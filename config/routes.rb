@@ -20,6 +20,7 @@ Wakatter::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/gameover', to: 'static_pages#gameover', via: 'get'
   match '/explanation', to: 'static_pages#explanation', via: 'get'
+  match '/erotter', to: 'static_pages#erotter', via: 'get'
 
   get '*path', to: 'application#render_404'
 

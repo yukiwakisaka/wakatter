@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   before_action :destroy_aka, only: :gameover
-  before_action :apply_second_layout, only: [:help, :explanation, :about, :contact]
+  before_action :apply_second_layout, only: [:help, :explanation, :about, :contact, :erotter]
 
   def home
   	if signed_in?
