@@ -8,7 +8,6 @@ describe RelationshipsController  do
 	before{ sign_in user, no_capybara: true }
 
 	describe "creating a relationship with Ajax" do
-
 		it "should increment the Relationship count" do
 			expect do
 				xhr :post, :create, relationship: { followed_id: other_user.id }
@@ -22,7 +21,6 @@ describe RelationshipsController  do
 	end
 
 	describe "destroying a relationship with Ajax" do
-
 		before { user.follow!(other_user) }
 		let(:relationship) do
 			user.relationships.find_by(followed_id: other_user.id)

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 	has_many :microposts, dependent: :destroy
 
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -22,7 +23,6 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, 
 			format:{with: VALID_EMAIL_REGEX}, 
 			uniqueness: {case_sensitive: false}
-			
 	validates :password, length: {minimum: 6}
 
 	def User.new_remember_token
@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
 		Micropost.from_users_followed_by(self)
 	end
 
+	# フォロー
 	def following?(other_user)
 		relationships.find_by(followed_id: other_user.id)
 	end
@@ -49,6 +50,7 @@ class User < ActiveRecord::Base
 		relationships.find_by(followed_id: other_user.id).destroy
 	end
 
+	# わかる
 	def wakaru?(wakarareru)
 		wakaru_relations.find_by(wakarareru_post_id: wakarareru.id)
 	end
@@ -61,6 +63,7 @@ class User < ActiveRecord::Base
 		wakaru_relations.find_by(wakarareru_post_id: wakarareru.id).destroy
 	end	
 
+	# わからん
 	def wakaran?(wakararen)
 		wakaran_rels.find_by(wakararen_post_id: wakararen.id)
 	end
@@ -74,8 +77,7 @@ class User < ActiveRecord::Base
 	end
 
 	private
-
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
-    end
+	    def create_remember_token
+	      self.remember_token = User.encrypt(User.new_remember_token)
+	    end
 end

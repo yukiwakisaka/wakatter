@@ -1,26 +1,19 @@
 require 'spec_helper'
 
 describe Micropost do
+	
   	let(:user) { FactoryGirl.create(:user) }
-	# before do
-	# 	#このコードは慣用的な意味で正しくないらしい
-	# 	@micropost = Micropost.new(content: "Lorem ipsum", user_id: user.id)
-	# end
-	before { @micropost = user.microposts.build(content: "Titan Arum")}
+	before { @micropost = user.microposts.build(content: "Titan Arum") }
 
 	subject{ @micropost }
 
-	it {should respond_to (:content)}
-	it {should respond_to (:user_id)}
-	it {should respond_to (:user)}
-
-	# 怪しい
-	it {should respond_to (:wakaru_users)}
-	it {should respond_to (:reverse_wakaru_relations)}
-
-	its(:user) {should eq user}
-
-	it {should be_valid}
+	it { should respond_to (:content) }
+	it { should respond_to (:user_id) }
+	it { should respond_to (:user) }
+	it { should respond_to (:wakaru_users) }
+	it { should respond_to (:reverse_wakaru_relations) }
+	its(:user) { should eq user }
+	it { should be_valid }
 
 	describe "when user_id is not present" do
 		before { @micropost.user_id = nil }

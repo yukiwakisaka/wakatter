@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-
+  
   before_action :signed_in_user
   before_action :correct_user, only: :destroy
 
@@ -8,10 +8,8 @@ class MicropostsController < ApplicationController
       @micropost = Micropost.find(params[:id])
       @waka = WakaruRelation.where(wakarareru_post: @micropost).pluck(:wakaru_user_id)
       @users = User.where(id: @waka)
-    elsif signed_in?
-      redirect_to gameover_path
     else
-      redirect_to root_path
+      undefined_url
     end
   end
 
@@ -32,7 +30,6 @@ class MicropostsController < ApplicationController
   end
 
   private
-
   	def micropost_params
   		params.require(:micropost).permit(:content)
   	end

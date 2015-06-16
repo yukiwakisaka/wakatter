@@ -1,4 +1,4 @@
 <%= form_for(current_user.wakaru_relations.find_by(wakarareru_post_id: feed_item.id),
-             html: { method: :delete }, remote: false) do |f| %>
-  <%= f.submit "わかる", class: "btn btn-xs btn-success btn-wakaru"  %>
+             html: { method: :delete }) do |f| %>
+	<%= f.submit "わかる", class: "btn btn-xs btn-success btn-wakaru"  %>
 <% end %>

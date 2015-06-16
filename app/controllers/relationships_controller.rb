@@ -1,14 +1,12 @@
 class RelationshipsController < ApplicationController
+  
   before_action :signed_in_user
 
   def create
     if present_user(params[:relationship][:followed_id])
       @user = User.find(params[:relationship][:followed_id])
       current_user.follow!(@user)
-      respond_to do |format|
-        format.html { redirect_to @user }
-        format.js
-      end
+      redirect_to @user
     else
       redirect_to root_path
     end
@@ -18,10 +16,7 @@ class RelationshipsController < ApplicationController
     if present_user(params[:id])
       @user = Relationship.find(params[:id]).followed
       current_user.unfollow!(@user)
-      respond_to do |format|
-        format.html { redirect_to @user }
-        format.js
-      end
+      redirect_to @user
     else
       redirect_to root_path
     end

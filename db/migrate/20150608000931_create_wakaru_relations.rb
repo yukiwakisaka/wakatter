@@ -1,9 +1,9 @@
 class CreateWakaruRelations < ActiveRecord::Migration
+
   def change
     create_table :wakaru_relations do |t|
       t.integer :wakarareru_post_id
       t.integer :wakaru_user_id
-
       t.timestamps
     end
     add_index :wakaru_relations, :wakarareru_post_id

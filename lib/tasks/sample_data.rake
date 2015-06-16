@@ -4,7 +4,6 @@ namespace :db do
     make_users
     make_microposts
     make_relationships
-    # make_wakaru_relations
   end 
 end
 
@@ -38,12 +37,6 @@ def make_relationships
   user = users.first
   followed_users = users[2..50]
   followers = users[3..40]
-
   followed_users.each { |followed| user.follow!(followed) }
   followers.each { |follower| follower.follow!(user) }
 end
-
-# def make_wakaru_relations
-#   user = user.first
-#   user.wakaru!(user.microposts.first)
-# end

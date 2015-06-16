@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user, only: :destroy
@@ -11,15 +12,17 @@ class UsersController < ApplicationController
     if present_user(params[:id])
   		@user = User.find(params[:id])
       @microposts = @user.microposts.paginate(page: params[:page])
-    elsif signed_in?
-      redirect_to gameover_path
     else
-      redirect_to root_path
+      undefined_url
     end
 	end
 
   def new
-  	@user = User.new
+    unless signed_in?
+      @user = User.new
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -65,13 +68,11 @@ class UsersController < ApplicationController
   end
 
   private 
-
   	def user_params
   		params.require(:user).permit(:name, :email, :password, :password_confirmation)
   	end
 
     #Before actions
-
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)

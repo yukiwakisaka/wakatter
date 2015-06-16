@@ -12,17 +12,11 @@ module UsersHelper
 		if size_post > 50
 			size_post = 50
 		end
-		
-		size_wakaru =  item.wakaru_users.count * 5
-		if size_wakaru > 50
-			size_wakaru = 50
-		end
-
+		size_wakaru = 50 * ( 1 - 0.95**item.wakaru_users.count )
 		size_ff = (item.user.followers.count + item.user.followed_users.count) * 0.2
 		if size_ff > 20
 			size_ff = 20 
 		end
-
 		size = size_post + size_wakaru + size_ff
 		return size
 	end

@@ -1,17 +1,15 @@
 <% unless feed_item.nil? %>
   <span id="wakaru_form">
+    <% if current_user.wakaru?(feed_item) %>  	
+    	<%= render partial: 'shared/wakaranai', locals: {feed_item: feed_item} %>
+    <% else %>
+      <%= render partial: 'shared/wakaru', locals: {feed_item: feed_item}  %>
+    <% end %>
 
-  <% if current_user.wakaru?(feed_item) %>  	
-  	<%= render partial: 'shared/wakaranai', locals: {feed_item: feed_item} %>
-  <% else %>
-    <%= render partial: 'shared/wakaru', locals: {feed_item: feed_item}  %>
-  <% end %>
-
-  <% if current_user.wakaran?(feed_item) %>  	
-  	<%= render partial: 'shared/unwakaran', locals: {feed_item: feed_item} %>
-  <% else %>
-    <%= render partial: 'shared/wakaran', locals: {feed_item: feed_item}  %>
-  <% end %>
-  
+    <% if current_user.wakaran?(feed_item) %>  	
+    	<%= render partial: 'shared/unwakaran', locals: {feed_item: feed_item} %>
+    <% else %>
+      <%= render partial: 'shared/wakaran', locals: {feed_item: feed_item}  %>
+    <% end %>
   </span>
  <% end %>

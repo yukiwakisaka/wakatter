@@ -1,4 +1,5 @@
 class WakaranRel < ActiveRecord::Base
+	
 	belongs_to :wakaran_user, class_name: "User"
 	belongs_to :wakararen_post, class_name: "Micropost"
 

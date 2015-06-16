@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "User Pages" do
+
   subject {page}
 
   describe "index" do
@@ -14,7 +15,6 @@ describe "User Pages" do
     it {should have_content('All users')}
 
     describe "pagination" do
-
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all)  { User.delete_all }
 

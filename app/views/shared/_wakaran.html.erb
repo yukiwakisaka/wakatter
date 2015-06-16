@@ -1,5 +1,4 @@
-
-<%= form_for(current_user.wakaran_rels.build(wakararen_post_id: feed_item.id), remote: false) do |f| %>
-  <%= f.hidden_field :wakararen_post_id %>
-  <%= f.submit "わからん", class: "btn btn-xs btn-wakaru" %>
+<%= form_for(current_user.wakaran_rels.build(wakararen_post_id: feed_item.id)) do |f| %>
+	<%= f.hidden_field :wakararen_post_id %>
+	<%= f.submit "わからん", class: "btn btn-xs btn-wakaru" %>
 <% end %>

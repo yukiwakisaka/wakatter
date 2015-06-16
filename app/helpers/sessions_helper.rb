@@ -1,4 +1,5 @@
 module SessionsHelper
+
   include UsersHelper
 
 	def sign_in(user)
@@ -23,14 +24,14 @@ module SessionsHelper
 
 	def current_user?(user)
     	user == current_user
-  	end
+  end
 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "ログインしてからにしてよねっ"
     end
+  end
 
 	def sign_out
 		self.current_user = nil
@@ -38,42 +39,50 @@ module SessionsHelper
 	end
 
 	def redirect_back_or(default)
-    	redirect_to(session[:return_to] || default)
-    	session.delete(:return_to)
-  	end
+  	redirect_to(session[:return_to] || default)
+  	session.delete(:return_to)
+	end
 
-  	def store_location
-    	session[:return_to] = request.url
-  	end
+	def store_location
+  	session[:return_to] = request.url
+	end
 
-  	def present_user(user_id)
-  		if User.find_by(id: user_id).nil?
-  			flash[:error] = "そのゆーざは存在しないか消去されましたw"
-  			return false
-  		else
-  			return true
-  		end
-  	end
+	def present_user(user_id)
+		if User.find_by(id: user_id).nil?
+			flash[:error] = "そのゆーざは存在しないか消去されましたw"
+			return false
+		else
+			return true
+		end
+	end
 
-  	def present_post(post_id)
-  		if Micropost.find_by(id: post_id).nil?
-  			flash[:error] = "その呟きは存在しないか消去されましたw"
-  			return false
-  		else
-  			return true
-  		end
-  	end
+	def present_post(post_id)
+		if Micropost.find_by(id: post_id).nil?
+			flash[:error] = "その呟きは存在しないか消去されましたw"
+			return false
+		else
+			return true
+		end
+	end
 
-    def akaban
-      if akaban?(@wakararen.user)
-        unless @wakararen.user.admin
-          User.find_by(id: @wakararen.user.id).destroy
-          flash[:error]="ban!!!!!!!"
-        end
+  def akaban
+    if akaban?(@wakararen.user)
+      unless @wakararen.user.admin
+        User.find_by(id: @wakararen.user.id).destroy
+        flash[:error]="ban!!!!!!!"
       end
     end
+  end
 
-    def akaban?(user)
-      wakaru_count(user)+3<wakaran_count(user)
+  def akaban?(user)
+    wakaru_count(user)+3<wakaran_count(user)
+  end
+
+  def undefined_url
+    if signed_in?
+      redirect_to gameover_path
+    else
+      redirect_to root_path
     end
+  end
 end

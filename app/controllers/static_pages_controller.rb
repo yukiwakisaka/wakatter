@@ -1,31 +1,16 @@
 class StaticPagesController < ApplicationController
 
   before_action :destroy_aka, only: :gameover
+  before_action :apply_second_layout, only: [:help, :explanation, :about, :contact]
 
   def home
   	if signed_in?
   		@micropost = current_user.microposts.build
   		@feed_items = current_user.feed.paginate(page: params[:page])
     else
-      render :layout => "second_layout"
+      apply_second_layout
   	end
   end
-
-  def help
-    render :layout => "second_layout"
-  end
-
-  def explanation
-    render :layout => "second_layout"
-  end
-
-  def about
-    render :layout => "second_layout"
-  end
-
-  def contact
-    render :layout => "second_layout"
-  end  
 
   def gameover
     render :layout => "go_layout"
@@ -38,4 +23,7 @@ class StaticPagesController < ApplicationController
       end
     end
 
+    def apply_second_layout
+      render :layout => "second_layout"
+    end
 end

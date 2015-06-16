@@ -4,20 +4,19 @@
   		<title>
   			<%= full_title(yield(:page_title)) %>
   		</title>
-  	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  	<%= csrf_meta_tags %>
-	<%= render 'layouts/shim' %>
+	  	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  	<%= csrf_meta_tags %>
+		<%= render 'layouts/shim' %>
 	</head>
-
 	<body class = "initial", <% if (yield(:screen).presence||false) %>style = "background-blend-mode: screen;"<% end %>>
 		<%= render 'layouts/header' %>
 		<div style = "width:450px;", class = "container">
 			<% flash.each do |key, value| %>
-			<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+				<%= content_tag(:div, value, class: "alert alert-#{key}") %>
       		<% end %>
 			<%= yield %>
 		</div>		
-			<%= render 'layouts/footer' %>
+		<%= render 'layouts/footer' %>
 	</body>
 </html>

@@ -1,8 +1,6 @@
-
 @import "bootstrap";
 
 /*mixins, variables, etc.*/
-
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
@@ -12,7 +10,6 @@ $grayMediumLight: #eaeaea;
 }
 
 /* universal */
-
 html {
   overflow-y: scroll;
 }
@@ -62,7 +59,6 @@ textarea {
 }
 
 /* typography */
-
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -89,7 +85,6 @@ p {
 }
 
 /* home */
-
 div.center{
   position: center;
 }
@@ -102,7 +97,6 @@ div.center{
 }
 
 /* explanation */
-
 ol.explain{
   text-align: center;
   font-size: 16px;
@@ -111,7 +105,6 @@ ol.explain{
 }
 
 /* header */
-
 .navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
   border-width: 0px;
 }
@@ -145,36 +138,25 @@ header > div.navbar-inner{
   text-decoration: none;
 }
 
-
-
 /* footer */
-
 footer {
   background-color: #000;
-
   margin-top: 40px;
   padding-top: 5px;
   border-top: 0px solid #000;
   color: #fff;
-
-
   a {
     color: #555;
-
     &:hover {
       color: #555;
     }
   }
-
   small {
     float: left;
   }
-
   ul {
     float: right;
-    list-style: none;
-  
-
+    list-style: none; 
     & li {
       float: left;
       margin-left: 10px;
@@ -183,7 +165,6 @@ footer {
 }
 
 /* miscellaneous */
-
 .debug_dump{
   color: both;
   float: left;
@@ -192,9 +173,7 @@ footer {
   @include box_sizing;
 }
 
-
 /* sidebar */
-
 aside {
   section {
     padding: 10px 0;
@@ -243,7 +222,6 @@ aside {
     display: block;
     text-align: center;
   }
-
   .waka-count{
     float:left; 
     padding-left:8px; 
@@ -262,7 +240,6 @@ aside {
 }
 
   /* forms */
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
