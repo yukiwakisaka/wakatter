@@ -15,7 +15,7 @@ class WakaranRelsController < ApplicationController
   end
 
   def destroy
-    if present_post(params[:id])
+    if present_post(WakaranRel.find(params[:id]).wakararen_post.id)
       @wakararen = WakaranRel.find(params[:id]).wakararen_post
       current_user.unwakaran!(@wakararen)
     end
