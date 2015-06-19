@@ -13,7 +13,7 @@
     <span class="user">
       <%= link_to feed_item.user.name, feed_item.user %>
     </span>
-    <span class="content"><%= wrap(feed_item.content) %></span>
+    <span class="content"><%= h((feed_item.content)) %></span>
     <span style="float: left; position: relative; right: <%= size %>px;">
       <%= render partial: 'shared/wakarare_count', locals: { micropost: feed_item } %>
       <%= render partial: 'shared/wakaru_form' , locals: { feed_item: feed_item} %>
