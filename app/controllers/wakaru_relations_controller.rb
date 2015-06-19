@@ -14,7 +14,7 @@ class WakaruRelationsController < ApplicationController
   end
 
   def destroy
-    if present_post(params[:id])
+    if present_post(WakaruRelation.find(params[:id]).wakarareru_post.id)
       @wakarareru = WakaruRelation.find(params[:id]).wakarareru_post
       current_user.wakaranai!(@wakarareru)
     end
