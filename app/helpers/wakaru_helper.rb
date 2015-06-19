@@ -2,7 +2,7 @@ module WakaruHelper
 
     def request_from
       if session[:request_from]
-        @prev_page = session[:request_from]
+        @prev_page = session[:request_from] unless session[:request_from] == request.original_url
       end
       session[:request_from] = request.original_url
     end

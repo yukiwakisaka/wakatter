@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
 	def show
+    store_location
     if present_user(params[:id])
   		@user = User.find(params[:id])
       @microposts = @user.microposts.paginate(page: params[:page])

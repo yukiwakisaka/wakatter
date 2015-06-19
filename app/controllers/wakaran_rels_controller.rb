@@ -11,11 +11,7 @@ class WakaranRelsController < ApplicationController
       current_user.wakaran!(@wakararen)
       akaban
     end
-    if present_post(params[:wakaran_rel][:wakararen_post_id])
-      redirect_back
-    else
-      redirect_to root_path
-    end
+    redirect_to micropost_path(@wakararen)
   end
 
   def destroy

@@ -10,7 +10,7 @@ class WakaruRelationsController < ApplicationController
       @wakarareru = Micropost.find(params[:wakaru_relation][:wakarareru_post_id])
       current_user.wakaru!(@wakarareru)
     end
-    redirect_back
+    redirect_to micropost_path(@wakarareru)
   end
 
   def destroy

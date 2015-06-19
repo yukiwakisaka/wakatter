@@ -1,7 +1,10 @@
 class MicropostsController < ApplicationController
+
+  include WakaruHelper
   
   before_action :signed_in_user
   before_action :correct_user, only: :destroy
+  before_action :request_from, only: :show
 
   def show
     if present_post(params[:id])

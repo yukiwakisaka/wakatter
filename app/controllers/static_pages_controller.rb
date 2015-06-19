@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   before_action :apply_second_layout, only: [:help, :explanation, :about, :contact, :erotter]
 
   def home
+    store_location
   	if signed_in?
   		@micropost = current_user.microposts.build
   		@feed_items = current_user.feed.paginate(page: params[:page])
