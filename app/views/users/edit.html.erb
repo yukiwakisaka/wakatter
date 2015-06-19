@@ -22,8 +22,11 @@
         <%= f.submit "へんこーする", class: "btn btn-primary" %>
       </div>
     <% end %>
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails" target = "_blank">iconへんこー</a>
+
+    <div style="padding-bottom: 60px;">
+      <%= gravatar_for(@user, size: 85) %>
+      <a href="http://gravatar.com/emails" target = "_blank">iconへんこー</a>
+    </div>
 
     <div style="padding:20px;">
       <center>
